@@ -53,7 +53,7 @@ struct cp_params {
 static struct semaphore cp_sem;
 static unsigned long il2_output;
 static int cpu;
-char type[TYPE_MAX_CHARACTERS] = "C";
+char type[TYPE_MAX_CHARACTERS+1] = "C";
 
 static DEFINE_PER_CPU(struct cp_params, cp_param)
 	 = { 0, 15, 0, 0, 0, 0, 0, 'r' };
