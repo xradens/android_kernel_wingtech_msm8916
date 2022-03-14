@@ -32,7 +32,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        language: [ 'cpp', 'python' ]
+        language: [ 'cpp' ]
         # CodeQL supports [ 'cpp', 'csharp', 'go', 'java', 'javascript', 'python', 'ruby' ]
         # Learn more about CodeQL language support at https://git.io/codeql-language-support
 
@@ -63,7 +63,7 @@ jobs:
     #    uses a compiled language
 
     - run: |
-       apt-get -y install build-essential gcc-arm-none-eabi
+       sudo apt-get -y install build-essential gcc-arm-none-eabi
        make
 
     - name: Perform CodeQL Analysis
