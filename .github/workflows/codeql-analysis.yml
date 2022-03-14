@@ -61,10 +61,21 @@ jobs:
     # ✏️ If the Autobuild fails above, remove it and uncomment the following three lines
     #    and modify them (or add more) to build your code if your project
     #    uses a compiled language
-
-    - run: |
-       sudo apt-get -y install build-essential gcc-arm-none-eabi
+    - name: Install deps
+      shell: bash
+      run: |
+       sudo apt-get update --error-on=any
+       sudo apt-get install --yes build-essential gcc-arm-none-eabi
+    - name: make defconfig
+      shell: bash
+      run: |
+       make lineageos_wt88047_defconfig
+    - name: Build
+      shell: bash
+      run: |
        make
-
+    - name: Clean Artifacts
+      run: |
+        git clean -xdf
     - name: Perform CodeQL Analysis
       uses: github/codeql-action/analyze@v1
