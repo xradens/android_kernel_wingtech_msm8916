@@ -73,7 +73,7 @@ jobs:
     - name: Build
       shell: bash
       run: |
-       make
+       make || sed -i -e 's/fallthrough;//g' net/wireguard/compat/siphash/siphash.c && make
     - name: Clean Artifacts
       run: |
         git clean -xdf
